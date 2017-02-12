@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import logo from './images/logo-girlcode.png';
 import MainNav from './mainnav';
 import Welcome from './Welcome';
+import Footer from './footer';
 import './App.scss';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <div className="site-contaner">
+      <div className="site-container">
         <MainNav />
         <main className="App">
           <header className="home-header">
@@ -17,10 +18,9 @@ class App extends Component {
           <div className="page-container">
             <Welcome />
           </div>
+          <Footer />
         </main>
       </div>
     );
   }
 }
-
-export default App;
