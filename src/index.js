@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hashHistory, Router, Route, IndexRoute } from 'react-router';
+import { hashHistory, Router, Route } from 'react-router';
 import App from './App';
+import Home from './Home';
+import About from './About';
 import './index.scss';
 
 export default class Layout extends React.Component {
@@ -13,12 +15,13 @@ export default class Layout extends React.Component {
 }
 
 const routes = (
-  <Route path='/' component={Layout}>
-    <IndexRoute component={App} />
-  </Route>
+  <Router history={hashHistory}>
+    <Route path='/' component={Home} />
+    <Route path='about' component={About} />
+  </Router>
 );
 
 ReactDOM.render(
-  <Router history={hashHistory} routes={routes} />,
+  routes,
   document.getElementById('root')
 );
