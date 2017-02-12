@@ -1,0 +1,91 @@
+nav.main-nav {
+  background: none;
+  box-shadow: none;
+  li.active {
+    background: none;
+    button {
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5) inset;
+      color: $color-green-dark;
+    }
+  }
+}
+.pagination,
+.main-nav ul {
+  margin: 0;
+  padding: 20px 0;
+  list-style: none;
+  li {
+    margin-right: 20px;
+  }
+}
+.pagination {
+  justify-content: space-between;
+}
+
+nav.site-nav {
+  background: $color-green;
+  position: relative;
+  .logo {
+    position: absolute;
+    right: 10vw;
+    top: 0;
+    margin: 10px;
+    width: 100px;
+  }
+  ul {
+    display: flex;
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  a {
+    display: block;
+    box-shadow: none;
+    border: none; //override materialize styles
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    &.active {
+      background: $color-active-nav;
+    }
+  }
+  .subnav {
+    display: none;
+    flex-direction: column;
+    background: $color-green;
+    &.expanded,
+    &.active {
+      display: flex;
+      position: relative;
+      z-index: 2;
+    }
+    li {
+      display: block;
+      float: none;
+      a {
+        padding: .5rem;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+.pagination {
+  li {
+    padding-right: 0;
+    padding-left: 0;
+    &.active {
+      background: none;
+      button {
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5) inset;
+        color: $color-green-dark;
+      }
+    }
+  }
+  button {
+    background: $color-green;
+    border: none;
+    box-shadow: none;
+    border-radius: 3px;
+  }
+}

@@ -1,0 +1,92 @@
+.page-container {
+  width: 90vw;
+  max-width: 70rem;
+  flex: 1 0 auto;
+  position: relative;
+  z-index: 1;
+  @include clearfix;
+  padding-top: 30px;
+  @include media-query-max($breakpoint-tablet-landscape) {
+    max-width: 100%;
+  }
+}
+
+.logo {
+  display: block;
+  margin: 30px auto;
+}
+
+.home-header {
+  background: url(/images/girlcode-header.jpg) center 70% no-repeat;
+  min-height: 400px;
+  background-size: cover;
+  padding: 20px;
+  color: #fff;
+  text-shadow: 1px 1px 0 #444;
+}
+
+.btn {
+  text-transform: none;
+  padding: 0 10px;
+}
+
+.info-container {
+  position: relative;
+  .info-button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: $color-green;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 100%;
+    border: none;
+    font-family: 'Inconsolata', monospace;
+  }
+  .info {
+    position: absolute;
+    top: 0;
+    left: 50px;
+    margin: -10px 0 0;
+    line-height: 30px;
+    background: #ccc;
+    color: $color-green-dark;
+    border-radius: 5px;
+    padding: 10px;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: all .5s ease-in-out;
+    &:before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-color: transparent #ccc transparent transparent;
+      border-style: solid;
+      border-width: 10px;
+    }
+    &.info-hidden {
+      transform: scaleX(0);
+    }
+    code, a {
+      color: $color-green-dark;
+    }
+  }
+}
+
+.slides {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.colophon {
+  justify-content: center;
+  li + li {
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid;
+  }
+}
