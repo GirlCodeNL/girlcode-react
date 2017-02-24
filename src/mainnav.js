@@ -9,7 +9,7 @@ export default class MainNav extends Component {
       title: 'Home',},
       { url : '/about',
       title: 'About',},
-      { url : '/aboutEvents',
+      { url : '/events',
       title: 'Events',},
       { url : '/tutorials',
       title: 'Tutorials',},

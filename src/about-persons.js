@@ -29,7 +29,7 @@ export default class AboutPersons extends Component {
   render() {
     return (
       <article className="about">
-        { persons.map((person, i) => <Person key={`identifier${i}`} title={person.title} img={person.img} content={person.content} quote={person.quote} quoteSrc={person.quoteSrc} />) }
+        { persons.map((person, i) => <Person key={`person-${i}`} title={person.title} img={person.img} content={person.content} quote={person.quote} quoteSrc={person.quoteSrc} />) }
       </article>
     );
   }
