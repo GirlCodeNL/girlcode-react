@@ -6,7 +6,7 @@ import Welcome from './Welcome';
 export default class Home extends Component {
   render() {
     return (
-      <App>
+      <div>
         <header className="home-header">
           <img src={logo} alt="GirlCode" className="logo" />
           <h1>Welcome to Girl Code</h1>
@@ -14,7 +14,7 @@ export default class Home extends Component {
         <div className="page-container">
           <Welcome />
         </div>
-      </App>
+      </div>
     );
   }
 }
