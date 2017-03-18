@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import App from './App';
 import logo from './images/logo-girlcode.png';
 import Welcome from './Welcome';
 

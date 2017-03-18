@@ -6,8 +6,7 @@ import Home from './Home';
 import About from './About';
 import Events from './Events';
 import Tutorials from './Tutorials';
-import Tutorial from './tutorials/tutorial';
-import VisionApiTutorial from './tutorials/vision-api-tutorial';
+import TutorialPage from './tutorials/TutorialPage';
 
 import './index.scss';
 
@@ -22,10 +21,10 @@ export default class Layout extends React.Component {
 const routes = (
   <Router history={browserHistory}>
     <Route path='/' component={withBaseLayout(Home)} />
-    <Route path='about' component={About} />
-    <Route path='events' component={Events} />
-    <Route path='tutorials' component={Tutorials} />
-    <Route path='tutorials/:tutorialName' component={Tutorial} />
+    <Route path='about' component={withBaseLayout(About)} />
+    <Route path='events' component={withBaseLayout(Events)} />
+    <Route path='tutorials' component={withBaseLayout(Tutorials)} />
+    <Route path='tutorials/:tutorialName' component={TutorialPage} />
   </Router>
 );
 
