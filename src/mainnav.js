@@ -12,7 +12,12 @@ export default class MainNav extends Component {
       { url : '/events',
       title: 'Events',},
       { url : '/tutorials',
-      title: 'Tutorials',},
+      title: 'Tutorials',
+      subnav: [
+        {title: 'Tictactoe', url: '/tutorials/tictactoe-tutorial'},
+        {title: 'Vision API', url: '/tutorials/vision-api-tutorial'},
+      ]
+      },
       { url : '/slides',
       title: 'Slides',},
       { url : '/blog',
@@ -22,7 +27,7 @@ export default class MainNav extends Component {
       <nav className="site-nav nav-wrapper">
         <img src={logo} alt="GirlCode" className="logo" />
         <ul>
-          { items.map((item, i) => <NavItem key={`identifier${i}`} title={item.title} url={item.url} />) }
+          { items.map((item, i) => <NavItem key={`identifier${i}`} title={item.title} url={item.url} subnav={item.subnav} />) }
         </ul>
       </nav>
     );

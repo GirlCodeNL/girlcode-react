@@ -15,9 +15,9 @@ export default class Tutorial extends Component {
 
   render() {
     return (
-      <nav>
+      <nav className="main-nav">
         <ul className="tutorial-steps">
-          { this.props.steps.map((step, i) => <TutorialStep key={`step-${i}`} data={this.props.steps[this.state.currentStep]}  /> )}
+          { this.props.steps.map((step, i) => <TutorialStep key={`step-${i}`} step={this.state.currentStep} data={this.props.steps[this.state.currentStep]}  /> )}
         </ul>
       </nav>
     );

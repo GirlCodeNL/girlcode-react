@@ -5,6 +5,7 @@ export default class NavItem extends Component {
   static propTypes = {
     title: PropTypes.string,
     url: PropTypes.string,
+    subnav: PropTypes.array,
   };
 
   static defaultProps = { title: 'item1', url: 'nu.nl' };
