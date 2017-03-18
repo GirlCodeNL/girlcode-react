@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import Tutorial from './tutorial';
 
 const TUTORIALS = [
@@ -6,8 +6,16 @@ const TUTORIALS = [
     name: 'tictactoe',
     title: 'Tic Tac Toe',
     steps: [
-      { type: 'text', content: '' },
-      { type: 'code', content: '' }
+      { type: 'text', content: 'Text content' },
+      { type: 'code', content: 'Code content' }
+    ],
+  },
+  {
+    name: 'vision-api',
+    title: 'Vision API',
+    steps: [
+      { type: 'text', content: 'Vision API text content' },
+      { type: 'code', content: 'Vision API code content' }
     ],
   },
 ];
@@ -15,10 +23,9 @@ const TUTORIALS = [
 export default class TutorialPage extends React.Component {
   render() {
     return (
-      <Tutorial
-        title={tut.title}
-        steps={tut.steps}
-      />
+      <article className="tutorial-page">
+        { TUTORIALS.map((tutorial, i) => <Tutorial key={`tutorial-${i}`} title={tutorial.title} steps={tutorial.steps} />) }
+      </article>
     );
   }
 }
