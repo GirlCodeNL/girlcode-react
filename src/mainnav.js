@@ -15,8 +15,8 @@ export default class MainNav extends Component {
       { url : '/tutorials',
       title: 'Tutorials',
       subnav: [
-        {title: 'Tictactoe', url: '/tutorials/tictactoe-tutorial'},
-        {title: 'Vision API', url: '/tutorials/vision-api-tutorial'},
+        {title: 'Tictactoe', url: '/tutorials/tictactoe'},
+        {title: 'Vision API', url: '/tutorials/vision-api'},
       ]
       },
       { url : '/slides',
