@@ -37,26 +37,39 @@ nav.site-nav {
     max-width: 70rem;
     margin-left: auto;
     margin-right: auto;
-  }
-  a {
-    display: block;
-    box-shadow: none;
-    border: none; //override materialize styles
-    cursor: pointer;
-    color: #fff;
-    font-size: 1rem;
-    &.active {
-      background: $color-active-nav;
+    li {
+      position: relative;
+      a {
+        display: block;
+        box-shadow: none;
+        border: none; //override materialize styles
+        cursor: pointer;
+        color: #fff;
+        font-size: 1rem;
+        &.active {
+          background: $color-active-nav;
+        }
+      }
     }
   }
   .subnav {
-    display: none;
-    flex-direction: column;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: block;
     background: $color-green;
-    &.expanded,
-    &.active {
-      display: flex;
-      position: relative;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    transition: all .3s ease-in-out;
+    &.expanded {
+      opacity: 1;
+      height: auto;
+      padding: 1rem;
       z-index: 2;
     }
     li {
