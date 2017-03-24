@@ -25,12 +25,24 @@ nav.main-nav {
 nav.site-nav {
   background: $color-green;
   position: relative;
-  .logo {
+  .logo-link {
     position: absolute;
     right: 10vw;
     top: 0;
-    margin: 10px;
-    width: 100px;
+    border: none;
+    text-decoration: none;
+    .logo {
+      margin: 10px;
+      width: 100px;
+      transition: all .3s ease-in-out;
+    }
+    &:hover {
+      border: none;
+      text-decoration: none;
+      .logo {
+        opacity: .8;
+      }
+    }
   }
   ul {
     display: flex;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavItem from './nav-item';
+import { Link } from 'react-router';
 import logo from './images/logo-girlcode.png';
 
 export default class MainNav extends Component {
@@ -25,7 +26,7 @@ export default class MainNav extends Component {
     ];
     return (
       <nav className="site-nav nav-wrapper">
-        <img src={logo} alt="GirlCode" className="logo" />
+        <Link to="/" className="logo-link"><img src={logo} alt="GirlCode" className="logo" /></Link>
         <ul>
           { items.map((item, i) => <NavItem key={`identifier${i}`} title={item.title} url={item.url} subnav={item.subnav} />) }
         </ul>
