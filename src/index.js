@@ -24,7 +24,7 @@ const routes = (
     <Route path='about' component={withBaseLayout(About)} />
     <Route path='events' component={withBaseLayout(Events)} />
     <Route path='tutorials' component={withBaseLayout(Tutorials, 'dark-theme')} />
-    <Route path='tutorials/:tutorialName' component={TutorialPage} />
+    <Route path='tutorials/:tutorialName' component={withBaseLayout(TutorialPage, 'dark-theme')} />
   </Router>
 );
 

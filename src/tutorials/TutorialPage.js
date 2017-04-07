@@ -30,7 +30,7 @@ export default class TutorialPage extends React.Component {
     const { tutorialName } = this.props.params;
     const tutorial = TUTORIALS.filter((t) => console.log('tutorial page', t, tutorialName) || (tutorialName === t.name))[0];
     return (
-      <article className="tutorials-page">
+      <article className="tutorials-page page-container">
         <Tutorial title={tutorial.name} steps={tutorial.steps} />
       </article>
     );

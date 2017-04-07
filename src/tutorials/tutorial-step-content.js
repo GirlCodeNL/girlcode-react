@@ -19,7 +19,6 @@ export default class TutorialStepContent extends Component {
   };
 
   createMarkup = () => {
-    console.log(this.state.content);
     return {__html: this.state.content };
   }
 

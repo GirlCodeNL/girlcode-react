@@ -18,4 +18,4 @@ export default class App extends Component {
   }
 }
 
-export const withLayout = (Component, classname) => () => <App theme={classname}><Component /></App>;
+export const withLayout = (Component, classname) => (props) => <App theme={classname}><Component {...props}/></App>;
