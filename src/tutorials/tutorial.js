@@ -15,7 +15,7 @@ export default class Tutorial extends Component {
   };
 
   render() {
-    console.log(this.props.steps[this.state.currentStep].content);
+    // console.log(this.props.steps[this.state.currentStep].content);
     return (
       <div className="tutorial-page">
         <nav className="main-nav">
