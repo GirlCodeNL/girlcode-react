@@ -5,8 +5,9 @@ import './App.scss';
 
 export default class App extends Component {
   render() {
+    console.log(this.props);
     return (
-      <div className="site-container">
+      <div className={`site-container ${this.props.theme}`}>
         <MainNav />
         <main className="App">
           {this.props.children}
@@ -17,4 +18,4 @@ export default class App extends Component {
   }
 }
 
-export const withLayout = Component => () => <App><Component /></App>;
+export const withLayout = (Component, classname) => () => <App theme={classname}><Component /></App>;
