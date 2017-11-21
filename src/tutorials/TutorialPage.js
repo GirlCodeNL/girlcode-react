@@ -28,7 +28,7 @@ const TUTORIALS = [
 ];
 
 export default function TutorialPage(props) {
-  const { tutorialName } = props.params;
+  const { tutorialName } = props.match.params;
   const tutorial = TUTORIALS.filter(t => console.log('tutorial page', t, tutorialName) || (tutorialName === t.name))[0];
   return (
     <article className="tutorials-page page-container">
