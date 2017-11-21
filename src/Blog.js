@@ -27,6 +27,8 @@ const getMediumPosts = () => {
     cache: 'default',
   });
   // const MEDIUM_SCRIPT_EXECUTION_PREVENTION = '])}while(1);</x>';
+  // trying to put both the request and response in a cache instance
+  // as per https://jakearchibald.com/2015/thats-so-fetch/ (scroll to "no-cors and opaque responses")
   fetch(request.clone()).then(response => caches.put(request, response.clone()));
   console.log(caches);
   // .then((content) => {
