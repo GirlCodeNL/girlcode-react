@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/no-danger */
 
-export default class TutorialStep extends Component {
-  static propTypes = {
-    step: PropTypes.number.isRequired,
-  };
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+class TutorialStep extends Component {
   render() {
     return (
       <li className={this.props.step ? 'active' : ''}>
@@ -12,3 +13,8 @@ export default class TutorialStep extends Component {
     );
   }
 }
+TutorialStep.propTypes = {
+  step: PropTypes.number.isRequired,
+};
+
+export default TutorialStep;

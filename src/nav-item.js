@@ -1,8 +1,12 @@
-import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
-import { Link } from 'react-router';
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/no-danger */
 
-export default class NavItem extends Component {
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { NavLink, Link } from 'react-router-dom';
+
+class NavItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,35 +17,53 @@ export default class NavItem extends Component {
       e.preventDefault();
       subnavOpen = !subnavOpen;
       this.setState({ subnavOpen });
-    }
+    };
   }
-  static propTypes = {
-    title: PropTypes.string,
-    url: PropTypes.string,
-    subnav: PropTypes.array,
-  };
-
-  static defaultProps = { title: 'item1', url: 'nu.nl' };
 
   render() {
-    let subnav = null;
-    if (this.props.subnav) {
-      subnav = <ul className={classnames('subnav', { expanded: this.state.subnavOpen })}>
-        {this.props.subnav.map((item, i) =>
-          <li key={`subnav-item-${i}`}>
-            <Link className="waves-effect waves-light" to={item.url}>{item.title}</Link>
-          </li>
-        )}
-      </ul>;
-    }
-
-    return (
+    const navWithSubnav = this.props.subnav ? (
       <li>
-        <Link className={classnames('waves-effect', 'waves-light', {'has-subnav dropdown-button': this.props.subnav})} to={this.props.url} activeClassName="active" onClick={this.toggle}>
+        <NavLink
+          to={this.props.url}
+          activeClassName="active"
+          onClick={this.toggle}
+          className={classnames('waves-effect', 'waves-light', { 'has-subnav dropdown-button': this.props.subnav })}
+        >
           {this.props.title}
-        </Link>
-        {subnav}
+        </NavLink>
+        <ul className={classnames('subnav', { expanded: this.state.subnavOpen })}>
+          {this.props.subnav.map(item => (
+            <li key={`subnav-item-${item.id}`}>
+              <Link className="waves-effect waves-light" to={item.url}>{item.title}</Link>
+            </li>
+          ))}
+        </ul>
       </li>
+    ) : null;
+    return (
+      this.props.subnav ? navWithSubnav : (
+        <li>
+          <NavLink
+            className={classnames('waves-effect', 'waves-light')}
+            to={this.props.url}
+            activeClassName="active"
+          >
+            {this.props.title}
+          </NavLink>
+        </li>
+      )
     );
   }
 }
+
+NavItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  subnav: PropTypes.arrayOf(PropTypes.object),
+};
+
+NavItem.defaultProps = {
+  subnav: null,
+};
+
+export default NavItem;
