@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
 import { Link } from 'react-router';
 
 export default class NavItem extends Component {
@@ -11,7 +12,7 @@ export default class NavItem extends Component {
     this.toggle = (e) => {
       e.preventDefault();
       subnavOpen = !subnavOpen;
-      this.setState({subnavOpen: subnavOpen});
+      this.setState({ subnavOpen });
     }
   }
   static propTypes = {
@@ -23,10 +24,9 @@ export default class NavItem extends Component {
   static defaultProps = { title: 'item1', url: 'nu.nl' };
 
   render() {
-    let subnav = '';
+    let subnav = null;
     if (this.props.subnav) {
-      const className = this.state.subnavOpen ? 'expanded' : '';
-      subnav = <ul className={`subnav ${className}`}>
+      subnav = <ul className={classnames('subnav', { expanded: this.state.subnavOpen })}>
         {this.props.subnav.map((item, i) =>
           <li key={`subnav-item-${i}`}>
             <Link className="waves-effect waves-light" to={item.url}>{item.title}</Link>
@@ -37,7 +37,7 @@ export default class NavItem extends Component {
 
     return (
       <li>
-        <Link className={`waves-effect waves-light ${this.props.subnav ? 'has-subnav dropdown-button' : ''}`} to={this.props.url} activeClassName="active" onClick={this.toggle}>
+        <Link className={classnames('waves-effect', 'waves-light', {'has-subnav dropdown-button': this.props.subnav})} to={this.props.url} activeClassName="active" onClick={this.toggle}>
           {this.props.title}
         </Link>
         {subnav}
