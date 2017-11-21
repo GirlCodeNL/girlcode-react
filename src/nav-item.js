@@ -24,6 +24,7 @@ class NavItem extends Component {
     const navWithSubnav = this.props.subnav ? (
       <li>
         <NavLink
+          exact
           to={this.props.url}
           activeClassName="active"
           onClick={this.toggle}
@@ -44,6 +45,7 @@ class NavItem extends Component {
       this.props.subnav ? navWithSubnav : (
         <li>
           <NavLink
+            exact
             className={classnames('waves-effect', 'waves-light')}
             to={this.props.url}
             activeClassName="active"

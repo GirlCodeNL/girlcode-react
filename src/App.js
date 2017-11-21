@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
-import MainNav from './mainnav';
-import Footer from './footer';
+import React from 'react';
+import { BrowserRouter, Switch } from 'react-router-dom';
+
+import DefaultLayout from './Layout';
+import Home from './Home';
+import About from './About';
+import Events from './Events';
+import Tutorials from './Tutorials';
+import TutorialPage from './tutorials/TutorialPage';
+
 import './App.scss';
 
-export default class App extends Component {
-  render() {
-    console.log(this.props);
-    return (
-      <div className={`site-container ${this.props.theme}`}>
-        <MainNav />
-        <main className="App">
-          {this.props.children}
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <DefaultLayout exact path="/" component={Home} />
+        <DefaultLayout exact path="/about" component={About} />
+        <DefaultLayout exact path="/events" component={Events} />
+        <DefaultLayout exact path="/tutorials" render={matchProps => <Tutorials theme="dark-theme" {...matchProps} />} />
+        <DefaultLayout path="/tutorials/:tutorialName" render={matchProps => <TutorialPage theme="dark-theme" {...matchProps} />} />
+      </Switch>
+    </BrowserRouter>
+  );
 }
-
-export const withLayout = (Component, classname) => (props) => <App theme={classname}><Component {...props}/></App>;
