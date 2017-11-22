@@ -1,4 +1,4 @@
-/* eslint-disable no-return-await */
+/* eslint-disable no-restricted-globals */
 import React, { Component } from 'react';
 
 import MediumPost from './mediumPost';
@@ -28,44 +28,55 @@ export default class Blog extends Component {
     this.getMediumPosts = () => {
       const tag = 'girlcode';
       const latestPostsUrl = `https://medium.com/tag/${tag}?format=json`;
-      const request = new Request(latestPostsUrl, {
+      const MEDIUM_SCRIPT_EXECUTION_PREVENTION = '])}while(1);</x>';
+      const header = new Headers({
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      });
+      fetch(latestPostsUrl, {
         method: 'GET',
+        headers: header,
         mode: 'no-cors',
         cache: 'default',
-      });
-      // const MEDIUM_SCRIPT_EXECUTION_PREVENTION = '])}while(1);</x>';
-      // trying to put both the request and response in a cache instance
-      // as per https://jakearchibald.com/2015/thats-so-fetch/ (scroll to "no-cors and opaque responses")
-      fetch(request.clone()).then(response => caches.put(request, response.clone()));
-      console.log(caches);
-      // .then((content) => {
-      //   console.log('content', content);
-      //   const json = JSON.parse(content.replace(MEDIUM_SCRIPT_EXECUTION_PREVENTION, ''));
-      //   return json.payload.value.slice(0, 3).map(post => post);
-      // });
+      })
+        .then((response) => {
+          if (response.ok) return response.json();
+          throw new Error('Something went wrong!');
+        })
+        .then((data) => {
+          console.log(data);
+          const json = JSON.parse(data.replace(MEDIUM_SCRIPT_EXECUTION_PREVENTION, ''));
+          return json.payload.value.slice(0, 3).map(post => post);
+        })
+        .catch((e) => {
+          console.error(e);
+          return e;
+        });
     };
   }
 
   componentDidMount() {
     this.wpPosts();
-    this.getMediumPosts();
+    // this.getMediumPosts();
   }
 
   render() {
-    console.log(this.state.mediumposts);
     return (
       <div>
-        <section className="blogposts">
-          <h3>Medium posts</h3>
-          {this.state.mediumposts.length ? this.state.mediumposts.map(mediumPost => (
-            <MediumPost {...mediumPost} />
-          )) : null}
-        </section>
-        <section>
-          <h3>{'Ineke\u2019s blogposts'}</h3>
-          {this.state.wpPosts.length ? this.state.wpPosts.map(post =>
-            <WPPost key={post.ID} {...post} />) : null}
-        </section>
+        {this.state.mediumposts.length ? (
+          <section className="blogposts">
+            <h3>Medium posts</h3>
+            {this.state.mediumposts.map(mediumPost => <MediumPost {...mediumPost} />)}
+          </section>
+        ) : null}
+        {this.state.wpPosts.length ? (
+          <section>
+            <h3>{'Ineke\u2019s blogposts'}</h3>
+            {this.state.wpPosts.map(post =>
+              <WPPost key={post.ID} {...post} />)}
+          </section>
+        ) : null}
       </div>
     );
   }
