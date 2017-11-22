@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import MainNav from './mainnav';
 import Footer from './footer';
 
-const DefaultLayout = ({ component: Component, ...rest }) => console.log(rest) || (
+const DefaultLayout = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={matchProps => (

@@ -1,23 +1,40 @@
 import React from 'react';
+import striptags from 'striptags';
+
+const wpDate = (date) => {
+  const dateFormatted = new Date(date);
+  return `${dateFormatted.getDate()} - ${dateFormatted.getMonth() + 1} - ${dateFormatted.getFullYear()}`;
+};
+
+const decodeHtml = (html) => {
+  const txt = document.createElement('textarea');
+  txt.innerHTML = html;
+  return txt.value;
+};
 
 export default function WPPost(props) {
+  const keys = Object.keys(props.attachments);
+  const attachment = props.attachments[keys[0]];
+  const postImage = props.featured_image ? props.featured_image : attachment;
   return (
     <a className="newsitem" href={`${props.URL}/${props.slug}`} target="_blank">
-      <figure className="image">
-        <img src={props.wpImage} alt="" />
-      </figure>
+      <div className="metadata">
+        {props.author ?
+          <figure className="author">
+            <img src={props.author.avatar_URL} alt={props.author.nice_name} />
+            <figcaption>{props.author.nice_name}</figcaption>
+          </figure>
+        : null}
+        <p className="date">{wpDate(props.date)}</p>
+      </div>
+      {postImage ?
+        <figure className="image preview-img">
+          <img src={postImage.URL} alt="" />
+        </figure>
+      : null}
       <div className="col">
-        <h4>{props.title}</h4>
-        <p>{props.excerpt}</p>
-        <div className="metadata">
-          <p className="date">{props.wpDate}</p>
-          {props.author ?
-            <figure className="author">
-              <figcaption>{props.author.nice_name}</figcaption>
-              <img src="{{author.avatar_URL}}" alt="{{author.nice_name}}" />
-            </figure>
-          : null}
-        </div>
+        <h4>{decodeHtml(striptags(props.title))}</h4>
+        <p>{decodeHtml(striptags(props.excerpt))}</p>
       </div>
     </a>
   );
