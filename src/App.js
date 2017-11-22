@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import DefaultLayout from './Layout';
-import TutorialLayout from './Tutorials';
+import { withLayout } from './Layout';
+import { withTutorialLayout } from './Tutorials';
 import Home from './Home';
 import About from './About';
 import Events from './Events';
@@ -15,12 +15,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <DefaultLayout exact path="/" component={Home} />
-        <DefaultLayout exact path="/about" component={About} />
-        <DefaultLayout exact path="/events" component={Events} />
-        <DefaultLayout exact path="/slides" component={Events} />
-        <DefaultLayout exact path="/blog" component={Blog} />
-        <TutorialLayout exact path="/tutorials/:tutorialName" component={TutorialPage} />
+        <Route exact path="/" render={matchProps => withLayout(Home)('')(matchProps)} />
+        <Route exact path="/about" render={matchProps => withLayout(About)('')(matchProps)} />
+        <Route exact path="/events" render={matchProps => withLayout(Events)('')(matchProps)} />
+        <Route exact path="/slides" render={matchProps => withLayout(Events)('')(matchProps)} />
+        <Route exact path="/blog" render={matchProps => withLayout(Blog)('')(matchProps)} />
+        <Route exact path="/tutorials/:tutorialName" render={matchProps => withTutorialLayout(TutorialPage)(matchProps)} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>

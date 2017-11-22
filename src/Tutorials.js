@@ -2,16 +2,16 @@ import React from 'react';
 
 import DefaultLayout from './Layout';
 
-const TutorialLayout = ({ component: Component, ...rest }) => (
+const TutorialLayout = ({ ...rest }) => (
   <DefaultLayout
     theme="dark-theme"
     {...rest}
-    component={matchProps => (
-      <div className="page-container">
-        <Component {...matchProps} />
-      </div>
-    )}
-  />
+  >
+    <div className="page-container">
+      {rest.children}
+    </div>
+  </DefaultLayout>
 );
-
 export default TutorialLayout;
+
+export const withTutorialLayout = Component => props => <TutorialLayout><Component {...props} /></TutorialLayout>;
