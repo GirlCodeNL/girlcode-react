@@ -1,3 +1,6 @@
+@import "site-nav";
+@import "mobile-nav";
+
 nav.main-nav {
   background: none;
   box-shadow: none;
@@ -10,6 +13,7 @@ nav.main-nav {
     }
   }
 }
+
 .pagination,
 .main-nav ul {
   margin: 0;
@@ -19,91 +23,9 @@ nav.main-nav {
     margin-right: 20px;
   }
 }
+
 .pagination {
   justify-content: space-between;
-}
-
-nav.site-nav {
-  background: $color-green;
-  position: absolute;
-  top: 0;
-  z-index: 5;
-  &.sticky-nav {
-    position: fixed;
-    box-shadow: 0 2px 5px $color-black-alpha-10;
-    animation: slide-down .3s forwards linear;
-  }
-  .logo-link {
-    position: absolute;
-    right: 10vw;
-    top: 0;
-    border: none;
-    text-decoration: none;
-    .logo {
-      margin: 10px;
-      width: 100px;
-      transition: all .3s ease-in-out;
-    }
-    &:hover {
-      border: none;
-      text-decoration: none;
-      .logo {
-        opacity: .8;
-      }
-    }
-  }
-  ul {
-    display: flex;
-    max-width: 70rem;
-    margin-left: auto;
-    margin-right: auto;
-    li {
-      position: relative;
-      a {
-        display: block;
-        box-shadow: none;
-        border: none; //override materialize styles
-        cursor: pointer;
-        color: #fff;
-        font-size: 1rem;
-        &.active {
-          background: $color-active-nav;
-        }
-      }
-    }
-  }
-  .subnav {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    display: block;
-    background: $color-green;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150%;
-    transition: all .3s ease-in-out;
-    &.expanded {
-      opacity: 1;
-      height: auto;
-      padding: 1rem;
-      z-index: 2;
-    }
-    li {
-      display: block;
-      float: none;
-      a {
-        padding: .5rem;
-        line-height: 1;
-      }
-    }
-  }
-}
-
-.pagination {
   li {
     padding-right: 0;
     padding-left: 0;
@@ -120,14 +42,5 @@ nav.site-nav {
     border: none;
     box-shadow: none;
     border-radius: 3px;
-  }
-}
-
-@keyframes slide-down {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: none;
   }
 }
