@@ -8,6 +8,7 @@ import About from './About';
 import Events from './Events';
 import TutorialPage from './tutorials/TutorialPage';
 import Blog from './Blog';
+import Slides from './Slides';
 
 import './App.scss';
 
@@ -18,7 +19,7 @@ export default function App() {
         <Route exact path="/" render={matchProps => withLayout(Home)('')(matchProps)} />
         <Route exact path="/about" render={matchProps => withLayout(About)('')(matchProps)} />
         <Route exact path="/events" render={matchProps => withLayout(Events)('')(matchProps)} />
-        <Route exact path="/slides" render={matchProps => withLayout(Events)('')(matchProps)} />
+        <Route exact path="/slides" render={matchProps => withLayout(Slides)('')(matchProps)} />
         <Route exact path="/blog" render={matchProps => withLayout(Blog)('')(matchProps)} />
         <Route exact path="/tutorials/:tutorialName" render={matchProps => withTutorialLayout(TutorialPage)(matchProps)} />
         <Redirect to="/" />
