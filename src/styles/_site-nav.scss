@@ -27,6 +27,9 @@ nav.site-nav {
       }
     }
   }
+  .mobile-icon {
+    display: none;
+  }
   .nav-primary {
     display: flex;
     max-width: 70rem;
@@ -119,21 +122,21 @@ nav.site-nav {
         }
       }
     }
-  }
-  &.sticky-nav {
-    .nav-primary {
-      margin-top: 56px;
-      height: calc(100vh - 56px);
+    &.sticky-nav {
+      .nav-primary {
+        margin-top: 56px;
+        height: calc(100vh - 56px);
+      }
     }
-  }
-  .mobile-icon {
-    display: block;
-    &.mobile-icon-open + .nav-primary {
-      transform: translateX(0);
+    .mobile-icon {
+      display: block;
+      &.mobile-icon-open + .nav-primary {
+        transform: translateX(0);
+      }
     }
-  }
-  &.mobile-nav-open {
-    overflow: visible;
+    &.mobile-nav-open {
+      overflow: visible;
+    }
   }
   @include media-query-max($breakpoint-tablet-portrait) {
     .nav-primary {

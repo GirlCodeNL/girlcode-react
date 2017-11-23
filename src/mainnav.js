@@ -78,7 +78,7 @@ export default class MainNav extends Component {
         <Link to="/" className="logo-link"><img src={logo} alt="GirlCode" className="logo" /></Link>
         <button
           type="button"
-          className={classNames('mobile-icon js-mobile-button', { 'mobile-icon-open': this.state.mobileNavOpen })}
+          className={classNames('mobile-icon', { 'mobile-icon-open': this.state.mobileNavOpen })}
           onClick={() => this.onMobileButtonClick()}
         >
           <i />
