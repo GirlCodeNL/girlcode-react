@@ -32,7 +32,7 @@ const persons = [
 export default function AboutPersons() {
   return (
     <article className="about">
-      { persons.map(person => <Person key={`person-${person.name}`} title={person.title} img={person.img} content={person.content} quote={person.quote} quoteSrc={person.quoteSrc} />) }
+      { persons.map(person => <Person key={`person-${person.name}`} name={person.name} img={person.img} content={person.content} quote={person.quote} quoteSrc={person.quoteSrc} />) }
     </article>
   );
 }

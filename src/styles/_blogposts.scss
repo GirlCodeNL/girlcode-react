@@ -74,24 +74,30 @@
     }
   }
 
-  @include media-query-max($breakpoint-tablet-portrait) {
+  @include media-query-max($breakpoint-tablet-landscape) {
     width: 100%;
-  }
-  @include media-query-max($breakpoint-phone-only) {
     .preview-img {
       flex: 0 1 7rem;
     }
     .col {
       flex: 1 1 10rem;
-      h4 {
-        font-size: 1rem;
-      }
+    }
+    .metadata {
       font-size: 12px;
     }
+
+    .col {
+      h4 {
+        font-size: 1.3rem;
+      }
+      font-size: .95rem;
+    }
+  }
+  @include media-query-max($breakpoint-phone-only) {
+
     .metadata {
       order: 2;
       margin-right: 0;
-      font-size: 12px;
       width: 100%;
       flex-direction: row;
       justify-content: flex-end;

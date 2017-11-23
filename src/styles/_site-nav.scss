@@ -90,7 +90,7 @@ nav.site-nav {
       position: absolute;
       right: 0;
       top: 0;
-      width: 100vw;
+      width: 30vw;
       height: calc(100vh - 56px);
       overflow: scroll;
       margin-top: 64px;
@@ -135,12 +135,17 @@ nav.site-nav {
   &.mobile-nav-open {
     overflow: visible;
   }
+  @include media-query-max($breakpoint-tablet-portrait) {
+    .nav-primary {
+      width: 50vw;
+    }
+  }
   @include media-query-max($breakpoint-phone-only) {
     &.sticky-nav {
       margin-top: 0;
     }
     .nav-primary {
-      width: 100%;
+      width: 100vw;
       margin-top: 56px;
     }
   }

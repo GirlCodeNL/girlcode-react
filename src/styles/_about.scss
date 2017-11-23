@@ -38,11 +38,37 @@
       }
     }
   }
+  @include media-query-max($breakpoint-tablet-portrait) {
+    display: block;
+    .bio {
+      width: 100%;
+      margin-right: 0;
+      display: flex;
+      flex-wrap: wrap;
+      h3 {
+        width: 100%;
+        flex: none;
+        margin-top: 0;
+      }
+      figure {
+        flex: 0 1 15rem;
+        margin-right: 20px;
+      }
+      p, blockquote {
+        margin-top: 0;
+        flex: 1 1 20rem;
+      }
+    }
+  }
   @include media-query-max($breakpoint-phone-only) {
     .bio {
       margin-right: 0;
       padding-left: 0;
       padding-right: 0;
+      figure {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
     }
   }
 }
