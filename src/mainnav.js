@@ -1,12 +1,33 @@
 /* eslint-disable react/prefer-stateless-function */
-/* eslint-disable react/no-danger */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 import NavItem from './nav-item';
 import logo from './images/logo-girlcode.png';
 
 export default class MainNav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sticky: false,
+    };
+    this.onScroll = () => {
+      const $mainNav = document.querySelector('.js-nav');
+      if (!$mainNav) return;
+
+      const topHeight = $mainNav.offsetHeight;
+      if ($mainNav.classList.contains('mobile-nav-open')) {
+        return;
+      }
+      const scrollPos = document.documentElement.scrollTop || window.scrollY;
+      this.setState({ sticky: scrollPos > topHeight });
+    };
+  }
+
+  componentDidMount() {
+    document.addEventListener('scroll', () => this.onScroll());
+  }
   render() {
     const items = [
       {
@@ -45,7 +66,7 @@ export default class MainNav extends Component {
       },
     ];
     return (
-      <nav className="site-nav nav-wrapper">
+      <nav className={classNames('site-nav nav-wrapper js-nav', { 'sticky-nav': this.state.sticky })}>
         <Link to="/" className="logo-link"><img src={logo} alt="GirlCode" className="logo" /></Link>
         <ul>
           { items.map(item => (

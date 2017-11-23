@@ -1,6 +1,7 @@
 nav.main-nav {
   background: none;
   box-shadow: none;
+  width: 100%;
   li.active {
     background: none;
     button {
@@ -24,7 +25,14 @@ nav.main-nav {
 
 nav.site-nav {
   background: $color-green;
-  position: relative;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  &.sticky-nav {
+    position: fixed;
+    box-shadow: 0 2px 5px $color-black-alpha-10;
+    animation: slide-down .3s forwards linear;
+  }
   .logo-link {
     position: absolute;
     right: 10vw;
@@ -112,5 +120,14 @@ nav.site-nav {
     border: none;
     box-shadow: none;
     border-radius: 3px;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: none;
   }
 }
