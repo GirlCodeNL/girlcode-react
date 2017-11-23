@@ -12,6 +12,19 @@ const decodeHtml = (html) => {
   return txt.value;
 };
 
+const excerpt = (content) => {
+  const searchKey = `^(.{${90}}[^\\s]*).*`;
+  const regex = new RegExp(searchKey, 'ig');
+  let trimmedString = content.replace(regex, '$1');
+
+  if (trimmedString !== content) {
+    trimmedString = `${trimmedString}\u2026`;
+  } else {
+    trimmedString = content;
+  }
+  return trimmedString;
+};
+
 export default function WPPost(props) {
   const keys = Object.keys(props.attachments);
   const attachment = props.attachments[keys[0]];
@@ -34,7 +47,7 @@ export default function WPPost(props) {
       : null}
       <div className="col">
         <h4>{decodeHtml(striptags(props.title))}</h4>
-        <p>{decodeHtml(striptags(props.excerpt))}</p>
+        <p>{decodeHtml(striptags(excerpt(props.excerpt)))}</p>
       </div>
     </a>
   );

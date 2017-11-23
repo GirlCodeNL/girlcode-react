@@ -1,11 +1,13 @@
+$space-xs: .25rem;
+$space-s: .5rem;
 .mobile-icon {
   position: relative;
   z-index: 2;
   border: none;
+  width: 2rem;
+  height: 2rem;
   min-width: 0;
   padding: 0;
-  width: 30px;
-  height: 40px;
   background: none;
   border-radius: 0;
   margin-left: auto;
@@ -18,17 +20,17 @@
   i, &::before, &::after {
     content: '';
     width: 100%;
-    transition: all .3s ease-in-out;
+    @include transition;
     background-color: $color-near-white;
     display: block;
-    height: 4px;
+    height: $space-xs;
   }
   &::before {
     animation: top-line-out 0.8s backwards;
     animation-direction: reverse;
   }
   i {
-    margin: 4px 0;
+    margin: $space-xs 0;
     animation: middle-line-out 0.8s backwards;
     animation-direction: reverse;
   }
@@ -42,7 +44,6 @@
       animation: top-line .8s forwards;
     }
     i {
-      margin: 0;
       animation: middle-line .8s forwards;
     }
     &::after {
@@ -53,33 +54,33 @@
 
 @keyframes top-line {
   0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(4px) rotate(0deg); }
-  100% { transform: translateY(4px) rotate(135deg); }
+  50% { transform: translateY($space-s) rotate(0deg); }
+  100% { transform: translateY($space-s) rotate(135deg); }
 }
 
 @keyframes middle-line {
-  50% { transform: rotate(0deg); margin: 0; }
+  50% { transform: rotate(0deg); }
   100% { transform: rotate(45deg); }
 }
 
 @keyframes bottom-line {
   0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-4px) rotate(0deg); }
-  100% { transform: translateY(-4px) rotate(135deg); }
+  50% { transform: translateY(-$space-s) rotate(0deg); }
+  100% { transform: translateY(-$space-s) rotate(135deg); }
 }
 @keyframes top-line-out {
   0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(4px) rotate(0deg); }
-  100% { transform: translateY(4px) rotate(135deg); }
+  50% { transform: translateY($space-s) rotate(0deg); }
+  100% { transform: translateY($space-s) rotate(135deg); }
 }
 
 @keyframes middle-line-out {
-  50% { transform: rotate(0deg); margin: 0; }
+  50% { transform: rotate(0deg); }
   100% { transform: rotate(45deg); }
 }
 
 @keyframes bottom-line-out {
   0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-4px) rotate(0deg); }
-  100% { transform: translateY(-4px) rotate(135deg); }
+  50% { transform: translateY(-$space-xs) rotate(0deg); }
+  100% { transform: translateY(-$space-xs) rotate(135deg); }
 }

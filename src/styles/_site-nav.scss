@@ -81,6 +81,7 @@ nav.site-nav {
     padding: 0 20px;
     display: flex;
     align-items: center;
+    overflow: hidden;
     .logo-link {
       right: auto;
       left: 20px;
@@ -89,8 +90,8 @@ nav.site-nav {
       position: absolute;
       right: 0;
       top: 0;
-      width: 350px;
-      height: calc(100vh - #{64px});
+      width: 100vw;
+      height: calc(100vh - 56px);
       overflow: scroll;
       margin-top: 64px;
       padding: 30px;
@@ -99,15 +100,32 @@ nav.site-nav {
       flex-direction: column;
       align-items: center;
       transition: all .3s ease-in-out;
+      li a {
+        text-align: center;
+      }
+      .subnav {
+        &, &.expanded {
+          position: relative;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: auto;
+          transform: none;
+          opacity: 1;
+          a {
+            text-align: center;
+            color: $color-green-dark;
+          }
+        }
+      }
     }
   }
   &.sticky-nav {
     .nav-primary {
-      margin-top: 64px;
-      height: calc(100vh - #{64px});
+      margin-top: 56px;
+      height: calc(100vh - 56px);
     }
   }
-
   .mobile-icon {
     display: block;
     &.mobile-icon-open + .nav-primary {
@@ -115,6 +133,7 @@ nav.site-nav {
     }
   }
   &.mobile-nav-open {
+    overflow: visible;
   }
   @include media-query-max($breakpoint-phone-only) {
     &.sticky-nav {

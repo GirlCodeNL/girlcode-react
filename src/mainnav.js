@@ -63,6 +63,7 @@ export default class MainNav extends Component {
     this.onMobileButtonClick = () => {
       this.setState({ mobileNavOpen: !this.state.mobileNavOpen });
     };
+    this.linkClickHandler = () => this.setState({ mobileNavOpen: false });
   }
 
   componentDidMount() {
@@ -78,13 +79,13 @@ export default class MainNav extends Component {
         <button
           type="button"
           className={classNames('mobile-icon js-mobile-button', { 'mobile-icon-open': this.state.mobileNavOpen })}
-          onClick={() => console.log(this.state.mobileNavOpen) || this.onMobileButtonClick()}
+          onClick={() => this.onMobileButtonClick()}
         >
           <i />
         </button>
         <ul className="nav-primary">
           { items.map(item => (
-            <NavItem key={`identifier${item.id}`} title={item.title} url={item.url} subnav={item.subnav} />
+            <NavItem key={`identifier${item.id}`} title={item.title} url={item.url} subnav={item.subnav} onClickHandler={this.linkClickHandler} />
           ))}
         </ul>
       </nav>

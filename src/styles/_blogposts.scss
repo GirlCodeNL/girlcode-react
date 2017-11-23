@@ -77,4 +77,35 @@
   @include media-query-max($breakpoint-tablet-portrait) {
     width: 100%;
   }
+  @include media-query-max($breakpoint-phone-only) {
+    .preview-img {
+      flex: 0 1 7rem;
+    }
+    .col {
+      flex: 1 1 10rem;
+      h4 {
+        font-size: 1rem;
+      }
+      font-size: 12px;
+    }
+    .metadata {
+      order: 2;
+      margin-right: 0;
+      font-size: 12px;
+      width: 100%;
+      flex-direction: row;
+      justify-content: flex-end;
+      .date {
+        margin-right: 0;
+        line-height: 1;
+      }
+    }
+    .author {
+      margin-right: 10px;
+      height: auto;
+      img {
+        display: none;
+      }
+    }
+  }
 }

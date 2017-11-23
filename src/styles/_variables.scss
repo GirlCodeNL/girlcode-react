@@ -19,6 +19,10 @@ $color-near-white: #f7f7f7;
   }
 }
 
+@mixin transition($prop: all, $dur: .3s, $easing: ease-in-out) {
+  transition: $prop $dur $easing;
+}
+
 $breakpoint-phone-only: 600px;
 $breakpoint-tablet-portrait: 900px;
 $breakpoint-tablet-landscape: 1024px;

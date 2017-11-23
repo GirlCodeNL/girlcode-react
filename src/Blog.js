@@ -63,7 +63,7 @@ export default class Blog extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page-container">
         {this.state.mediumposts.length ? (
           <section className="blogposts">
             <h3>Medium posts</h3>

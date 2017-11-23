@@ -49,6 +49,7 @@ class NavItem extends Component {
             className={classnames('waves-effect', 'waves-light')}
             to={this.props.url}
             activeClassName="active"
+            onClick={this.props.onClickHandler}
           >
             {this.props.title}
           </NavLink>
